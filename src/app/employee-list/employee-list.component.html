@@ -1,0 +1,57 @@
+<div class="nav">
+    <H1>Employee Tracking</H1>
+    <div class="navLinks">
+        <a routerLink="/survey">For Employees</a>
+        <a routerLink="/list">For Employers</a>
+
+    </div>
+</div>
+
+
+
+
+<div class="table">
+    <table class="">
+        <thead>
+            <tr>
+                <th><button type="button" class="header" (click)="sortEmployeeName()">Name ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortEmail()">Email ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortAngular()">Angular ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortJs()">Javasript ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortHtml()">HTML ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortCss()">CSS ⬍</button></th>
+                <th><button type="button" class="header" (click)="sortEmployeesId()">Employee ID ⬍</button></th>
+                <th>
+                    <p></p>
+                </th>
+                <th>
+                    <p></p>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr *ngFor=" let employee of employeeList; index as i">
+                <td>{{employee.employeename}} </td>
+                <td>
+                    <p *ngIf="!edit">{{employee.email}} </p>
+                    <form *ngIf="index === i && edit" (ngSubmit)="updateEmail(email)" #email="ngForm">
+                        <label><input id="email" type="text" name="email" ngModel></label>
+                    </form>
+                </td>
+
+                <td class="number">{{employee.angular}}</td>
+                <td class="number">{{employee.javascript}}</td>
+                <td class="number">{{employee.html}}</td>
+                <td class="number">{{employee.css}}</td>
+                <td class="number"> {{employee.id}}</td>
+
+
+                <td class="number"><button type="button" (click)="deleteEmployee(employee.id)">🗑</button></td>
+                <td class="number"><button type="button" (click)="editEmail(employee.id)"
+                        (click)="setIndex(i)">✎</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

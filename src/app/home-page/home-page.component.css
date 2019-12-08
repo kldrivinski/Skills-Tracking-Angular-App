@@ -1,0 +1,14 @@
+
+.nav {
+    border: solid black 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 10px;
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: column;
+}

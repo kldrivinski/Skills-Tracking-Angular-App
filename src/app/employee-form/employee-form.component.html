@@ -1,0 +1,51 @@
+<div class="nav">
+    <H1>Employee Skills Survey</H1>
+    <div class="navLinks">
+        <a routerLink="/list">For Employers</a>
+
+    </div>
+</div>
+
+<div class="addform" *ngIf="start">
+    <h2>Please fill out the below form to the best of your ability.</h2>
+</div>
+
+<form (ngSubmit)="addEmployee(addemployee)" #addemployee="ngForm">
+
+    <div class="addform" *ngIf="start">
+        <label>Name </label><input type="text" name="employeeName" ngModel>
+        <label>Email</label> <input type="text" name="email" ngModel>
+
+        <h2>For each skill, please rate your ability 1-5, 1 being novice and 5 being expert.</h2>
+
+
+        <div class="skillsform">
+            <label>Angular</label><input type="text" name="angular" ngModel pattern="[1-5]" maxlength="1">
+            <label>Javascript</label><input type="text" name="javascript" ngModel pattern="[1-5]" maxlength="1">
+            <label>HTML</label><input type="text" name="html" ngModel pattern="[1-5]" maxlength="1">
+            <label>CSS</label><input type="text" name="css" ngModel pattern="[1-5]" maxlength="1">
+        </div>
+
+        <div class="error" *ngIf="addemployee.invalid">
+            Number must be between 1-5
+        </div>
+
+        <button type="submit" [disabled]="addemployee.invalid">Submit</button>
+    </div>
+</form>
+
+<div class="skillsform" *ngIf="!start">
+    <h2>Thank you! Your input is important.</h2>
+</div>
+
+
+
+<!-- <section class="addform" *ngIf="add">
+    <form (ngSubmit)="addCartItem(additem)" #additem="ngForm">
+        <label>Product <input type="text" name="product" ngModel></label>
+        <label>Price <input type="number" name="price" ngModel></label>
+        <label>Quantity <input type="number" name="quantity" ngModel></label>
+        <button type="submit">Submit</button>
+    </form>
+
+</section> -->

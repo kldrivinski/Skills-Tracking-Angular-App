@@ -1,0 +1,57 @@
+
+.nav {
+    border: solid black 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 10px;
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: column;
+}
+
+
+table {
+    border: solid black 2px;
+    border-spacing: 0px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+th {
+    border-bottom: solid black 2px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.header {
+    width: 100%;
+    border-style: none;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+tr {
+    border: solid black 2px;
+ 
+}
+
+td {
+padding: 10px;
+
+
+}
+
+
+td > button {
+    border-style: none;
+}
+
+
+.number {
+    text-align: center
+}
