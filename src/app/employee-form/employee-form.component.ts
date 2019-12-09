@@ -14,14 +14,8 @@ export class EmployeeFormComponent implements OnInit {
 
 
   employee: Employee;
-
   start: boolean = true;
-
-
-
   angular: number[] = [1, 2, 3, 4, 5];
-
-
   employeeList: any[];
 
   constructor(private employeeApiService: SkillsDbService, private router: Router) { }
@@ -29,9 +23,10 @@ export class EmployeeFormComponent implements OnInit {
 
 
   addEmployee(form: NgForm) {
-    // this.employeeApiService.addEmployee(form.value);
-    // // console.log(form.value)
+    // used with ngIf to hide the form after done
     this.start = !this.start;
+    // call the api to "post" the values of the form to the db
+    // resubscribes and loads the new employees
     this.employeeApiService.addEmployee(form.value).subscribe(
       () => {
         this.loadEmployees();
@@ -42,13 +37,16 @@ export class EmployeeFormComponent implements OnInit {
 
 
   loadEmployees() {
+    // calls the api to get the list of employees
     this.employeeApiService.getEmployeeApi().subscribe(employees => {
+      // sets that list = to the empty variable here
       this.employeeList = employees;
       console.log(this.employeeList)
     })
   }
 
   ngOnInit() {
+    // loads the list from the DB
     this.loadEmployees();
     // console.log(this.employeeList);
   }

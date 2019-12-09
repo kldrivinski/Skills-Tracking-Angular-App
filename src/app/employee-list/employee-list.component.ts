@@ -16,7 +16,6 @@ export class EmployeeListComponent implements OnInit {
 
 
   employeeList: Employee[];
-  add = false;
   edit = false;
   editItem;
   index: number;
@@ -35,6 +34,7 @@ export class EmployeeListComponent implements OnInit {
 
 
   setIndex(index) {
+    // used to isolate an item in the list
     this.index = index;
   }
 
@@ -49,12 +49,15 @@ export class EmployeeListComponent implements OnInit {
 
   sortEmployeesId() {
     if (this.idClick % 2 === 0) {
+      // pulls in the employee API sorted by ID
       this.employeeApiService.getEmployeeApi().subscribe(employees => {
         this.employeeList = employees;
       })
+      //increments the click
       this.idClick++
     }
     else {
+      // pulls in the employee API sorted by ID Descending
       this.employeeApiService.getEmployeeDesc().subscribe(employees => {
         this.employeeList = employees;
       })
@@ -175,8 +178,10 @@ export class EmployeeListComponent implements OnInit {
 
 
   editEmail(id: number) {
+    // used in NnfIF
     this.edit = !this.edit;
     console.log(id);
+    // pulls in the list item to be edited
     this.employeeApiService.getEmployee(id).subscribe(items => {
       this.editItem = items;
       console.log(this.editItem)
@@ -186,9 +191,12 @@ export class EmployeeListComponent implements OnInit {
 
   updateEmail(form: NgForm) {
     this.edit = !this.edit;
+    // clears the item in the list for reference
     this.index = null;
+    // sets the form values to the item's value
     this.editItem.email = form.value.email;
     console.log(this.editItem);
+    //sends to the service to for PUT
     this.employeeApiService.changeEmail(this.editItem).subscribe(
       () => {
         this.loadEmployees();
